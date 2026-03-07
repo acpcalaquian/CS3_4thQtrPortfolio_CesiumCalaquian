@@ -84,7 +84,7 @@ const songInfo=document.getElementById("songInfo")
 
 const songs=[
 
-{title:"Heaven",artist:"Clairo",file:"/assets/heaven.mp3"},
+{title:"Heaven",artist:"Clairo",file:"//assets/heaven.mp3"},
 {title:"Add Up My Love",artist:"Clairo",file:"/assets/addupmylove.mp3"},
 {title:"Love Songs",artist:"Clairo",file:"/assets/lovesongs.mp3"}
 
