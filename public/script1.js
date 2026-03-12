@@ -26,7 +26,7 @@ window.onload = function(){
 }
 
 
-// ADD MOVIE
+// ADD / UPDATE MOVIE
 document.getElementById("movieForm").addEventListener("submit", function(e){
 
     e.preventDefault()
@@ -35,16 +35,33 @@ document.getElementById("movieForm").addEventListener("submit", function(e){
     const year = document.getElementById("year").value
     const genre = document.getElementById("genre").value
 
-    const movie = {
-        title:title,
-        year:year,
-        genre:genre,
-        rating:selectedRating
-    }
-
     let movies = JSON.parse(localStorage.getItem("movies")) || []
 
-    movies.push(movie)
+    // CHECK IF MOVIE TITLE ALREADY EXISTS
+    let existingMovie = movies.find(movie => movie.title.toLowerCase() === title.toLowerCase())
+
+    if(existingMovie){
+
+        // UPDATE INFO
+        existingMovie.year = year
+        existingMovie.genre = genre
+
+        // AVERAGE RATING
+        existingMovie.rating = Math.round((parseInt(existingMovie.rating) + parseInt(selectedRating)) / 2)
+
+    }else{
+
+        // ADD NEW MOVIE
+        const movie = {
+            title:title,
+            year:year,
+            genre:genre,
+            rating:selectedRating
+        }
+
+        movies.push(movie)
+
+    }
 
     localStorage.setItem("movies", JSON.stringify(movies))
 
@@ -66,7 +83,7 @@ function displayMovies(){
 
     let movies = JSON.parse(localStorage.getItem("movies")) || []
 
-    movies.forEach(movie => {
+    movies.forEach((movie, index) => {
 
         const div = document.createElement("div")
 
@@ -81,11 +98,32 @@ function displayMovies(){
         div.innerHTML = `
         <strong>${movie.title}</strong> (${movie.year}) <br>
         Genre: ${movie.genre} <br>
-        Rating: <span class="yellow">${starDisplay}</span>
+        Rating: <span class="yellow">${starDisplay}</span> <br>
+        <button onclick="deleteMovie(${index})">Delete</button>
         `
 
         movieList.appendChild(div)
 
     })
+
+}
+
+
+// DELETE MOVIE
+function deleteMovie(index){
+
+    let confirmDelete = confirm("Are you sure you want to delete this movie?")
+
+    if(confirmDelete){
+
+        let movies = JSON.parse(localStorage.getItem("movies")) || []
+
+        movies.splice(index,1)
+
+        localStorage.setItem("movies", JSON.stringify(movies))
+
+        displayMovies()
+
+    }
 
 }
