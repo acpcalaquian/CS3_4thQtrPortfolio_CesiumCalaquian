@@ -130,18 +130,33 @@ For observations on z-index, the element with the higher z-index value will appe
 
 3. Please answer the following reflection questions (15 minutes)
 
-    a. Could you summarize the differences between the CSS position values (static, relative, absolute, fixed)?  
-Static: default positioning for all HTML elements, follows normal flow
-Relative: remains in normal flow, but can be moved relative to its original position
-Absolute: relative to its nearest ancestor, removed from normal flow
-Fixed: removed from normal flow but anchored to viewport
-    b. How does absolute positioning depend on its parent element?
-An absolutely positioned element is positioned relative to its nearest ancestor that has a position value other than static.
-    c. How do you differentiate sticky from fixed (you can research on sticky)?
-A sticky element is initially in the normal flow, becomes fixed at a certain scroll position, and then behaves like a fixed element. 
-    d. If you were designing a webpage for a school event, how might you use positioning to highlight important information? Please give concrete examples.
+### a. Could you summarize the differences between the CSS position values (static, relative, absolute, fixed)?
+
+- **Static**: Default positioning for all HTML elements; follows the normal document flow.  
+- **Relative**: Remains in the normal flow, but can be moved relative to its original position.  
+- **Absolute**: Positioned relative to its nearest positioned ancestor; removed from normal flow.  
+- **Fixed**: Removed from normal flow and anchored to the viewport (stays in place when scrolling).  
+
+---
+
+### b. How does absolute positioning depend on its parent element?
+
+An absolutely positioned element is positioned relative to its nearest ancestor that has a position value other than `static`.
+
+---
+
+### c. How do you differentiate sticky from fixed?
+
+A **sticky** element is initially in the normal flow, then becomes fixed when a certain scroll position is reached.  
+A **fixed** element is always anchored to the viewport and does not move when scrolling.
+
+---
+
+### d. If you were designing a webpage for a school event, how might you use positioning to highlight important information? Please give concrete examples.
+
 I can use:
-fixed for a navigation bar so it stays visible while scrolling
-absolute to place badges like "NEW" or "IMPORTANT" on announcements
-relative to slightly adjust layout elements
-z-index to make pop-ups or notices appear above other content
+
+- **Fixed** for a navigation bar so it stays visible while scrolling  
+- **Absolute** to place badges like "NEW" or "IMPORTANT" on announcements  
+- **Relative** to slightly adjust layout elements  
+- **z-index** to make pop-ups or notices appear above other content  
